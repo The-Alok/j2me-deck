@@ -6,13 +6,14 @@
 
 
 J2ME Deck is a native desktop runtime for `.jar` / `.jad` mobile games, with a console-style, controller- and touch-friendly game
-library. It is plain Java SE + Swing: no Android, no emulator image, no NDK. It is based on the architecture and API coverage of
+library. It is plain Java SE + Swing. It is based on the architecture and API coverage of
 [J2ME-Loader](https://github.com/nikita36078/J2ME-Loader) (Apache-2.0) and is **not** an official release of that project - see
 [Credits and licenses](#credits-and-licenses).
 
+> *AI (Claude) was used for development of this emulator.*
+
 > **Status: 0.1.0, first public release.** It was developed and tested on a real Steam Deck with a handful of games
-> (for example Gameloft's *Diamond Rush*, K800i build, and the 3D game *Medal of Honor Airborne*). Many other games are untested;
-> expect rough edges and please report them (see [Reporting problems](#reporting-problems)).
+> (for example Gameloft's *Diamond Rush*, K800i build, and the 3D game *Medal of Honor Airborne*).
 
 **No games are included.** You need your own `.jar` files of games you are entitled to use.
 
@@ -50,15 +51,7 @@ That makes Java fail to start (and can break the shell script too). `j2me-deck` 
 the system library path, drops the overlay preload and then runs `run.sh`. If the executable bit was lost (e.g. the folder
 was copied through a USB stick), run `chmod +x j2me-deck` in Desktop Mode. Rebuild it with `launcher/build.sh` (needs `gcc`).
 
-**If it still does not start:** every launch writes `~/.local/share/j2me-deck/launch.log` (the previous one is kept as
-`launch.log.1`) with the environment Steam gave the program, which Java was found and the error. Open it in Desktop Mode, or
-send it to whoever helps you.
-
-**If the game starts but sits on its first screen in Game Mode:** the game's own log is `~/.local/share/j2me-deck/logs/<game name>.log`
-(`launch.log` only covers the launcher). Game Mode uses the Swing renderer by default; `--renderer gles` in the launch options tries OpenGL ES
-instead. The log's `[j2me] alive` lines show whether the game keeps running while the picture stays still.
-
-**Controller:** keep Steam's default *Gamepad* layout. The loader reads the virtual Xbox pad directly, so no key
+**Controller:** On steam deck keep Steam's default *Gamepad* layout on gamemode and gamepad layout (by holding start) in desktop mode. The loader reads the virtual Xbox pad directly, so no key
 bindings are needed:
 
 | Deck control | Sent to the game |
