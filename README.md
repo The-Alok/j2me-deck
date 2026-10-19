@@ -168,29 +168,7 @@ The scanner flags unsupported features before you waste time launching a game.
 *Settings -> Device & compatibility* in the library (or `~/.config/j2me-deck/profiles/<game>/game.properties`):
 
 * **Device preset** (about 25 handsets: Sony Ericsson, Nokia, Motorola, Siemens, LG, Sagem, Sharp, Samsung and generic sizes)
-  sets the screen size, the key layout and the platform name the game sees. Games often pick code paths from
-  `microedition.platform`, so this is the first thing to try when a game misbehaves.
-* **Key layout** matters more than it sounds: Motorola phones sent -20/-21/-22 for fire and the soft keys and unusual
-  codes for the d-pad, Siemens used -59..-62, LG -202/-203. A game built for one of them ignores the Nokia codes this
-  loader uses by default. A layout translates the loader's keys into the codes that family really sent, and
-  `getKeyCode` / `getGameAction` follow it.
-* **Input quirks:** send `keyRepeated` or turn it off, send `keyPressed` on repeats, swap the soft keys, make soft keys
-  also reach `keyPressed` when they fire a Command.
-* **Drawing quirks:** ignore `setFullScreenMode`, always repaint the whole screen (ignore region repaints), ignore
-  `serviceRepaints()`, no automatic repaint when a canvas is shown, wait for each frame to reach the screen,
-  override `hasPointerEvents()`.
-* **Frame rate limit** and **game speed**, **timing patches** (ignore `System.gc()` and `Thread.sleep()`, make
-  `Thread.yield()` sleep), and a **reported heap size** for games that check `Runtime.freeMemory()`.
-
-These work because the loader rewrites calls to `Thread.sleep`, `System.currentTimeMillis`, `System.gc`, `Thread.yield`
-and `Runtime.freeMemory/totalMemory/gc` inside the game's own classes; the JDK itself is never affected.
-
-Profile keys: `preset`, `layout`, `platform`, `locale`, `encoding`, `tweak.keyrepeat|keypressonrepeat|swapsoftkeys|softkeyfix|
-haspointer|ignorefullscreen|ignoreregionrepaint|ignoreservicerepaints|norepaintonsetcurrent|syncflush`, `fps`, `speed`,
-`patch.ignoregc|ignoresleep|yieldsleep`, `heapmb`, `autosize`, `autosizeheight`.
-
-**Auto-size:** *Match the display's aspect ratio at height N* gives games that adapt to their screen a canvas with the
-Deck's proportions instead of a portrait phone shape.
+  sets the screen size, the key layout and the platform name the game sees. 
 
 ## 3D games
 
@@ -275,24 +253,7 @@ return. Disable with `--no-autopause`.
 ```
 Game saves (RMS) live in `~/.local/share/j2me-deck/rms/<vendor>_<game>/`, one folder per game.
 Music: Java's built-in synthesizer is used. For nicer instruments drop a SoundFont at
-`~/.config/j2me-deck/soundfont.sf2`.
-
-## Troubleshooting
-
-* **Does not start in Game Mode (nothing appears)** - read `~/.local/share/j2me-deck/launch.log`. Make sure the Steam entry
-  points at `j2me-deck` with Compatibility *unticked*, Java is installed (`./setup-java.sh`), and the folder is on internal
-  storage.
-* **Black or garbled picture with the new OpenGL ES output** - set *Renderer* to `swing` (or start with `--renderer swing`) and look at the log for the `OpenGL ES output` line.
-* **Black window / no keyboard input** - click the window once. In Game Mode make sure the shortcut launches `j2me-deck` or
-  `run.sh` (not `java` directly), which set the window-manager workaround gamescope needs.
-* **Controller does nothing** - check `ls /dev/input/js*`. If the device has another name, start with
-  `J2ME_JOYSTICK=/dev/input/by-id/<name>-joystick ./run.sh game.jar`. `J2ME_DEBUG_INPUT=1` prints every key event.
-* **No sound** - run from a terminal and look for a "MIDI synthesizer unavailable" line; it means Java found no audio
-  device. The game keeps running silently.
-* **Sound missing or odd** - `J2ME_DEBUG_AUDIO=1 bash run.sh game.jar` logs every player start/stop/end-of-media (lines starting `[audio]`) to the terminal / launch log.
-* **Music very quiet** - quiet MIDI tracks are lifted automatically (`run.sh` passes the needed
-  `--add-exports java.desktop/com.sun.media.sound=ALL-UNNAMED`). `midiboost.target=-14` is louder, `midiboost=false` turns it off.
-* **Game says it needs a different screen size** - try `--size 176x208`, `--size 240x320` or `--size 320x240`.
+`~/.config/j2me-deck/
 
 ## Building / testing
 
