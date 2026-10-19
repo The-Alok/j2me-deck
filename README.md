@@ -10,7 +10,7 @@ library. It is plain Java SE + Swing. It is based on the architecture and API co
 [J2ME-Loader](https://github.com/nikita36078/J2ME-Loader) (Apache-2.0) and is **not** an official release of that project - see
 [Credits and licenses](#credits-and-licenses).
 
-> *AI (Claude) was used for development of this emulator.*
+**AI (Claude) was used for development of this emulator.**
 
 > **Status: 0.1.0, first public release.** It was developed and tested on a real Steam Deck with a handful of games
 > (for example Gameloft's *Diamond Rush*, K800i build, and the 3D game *Medal of Honor Airborne*).
