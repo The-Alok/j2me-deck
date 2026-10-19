@@ -45,11 +45,6 @@ Add the native executable **`j2me-deck`** (not `run.sh`) to Steam. Do this once 
    options, or use `./make-shortcut.sh game.jar "Name"`, which creates a menu entry Steam can add.)
 4. In Game Mode keep Steam's *Gamepad* controller layout (see below).
 
-Why a native executable: Steam starts non-Steam games with its own runtime libraries and overlay injected into the process.
-That makes Java fail to start (and can break the shell script too). `j2me-deck` is a small static program that restores
-the system library path, drops the overlay preload and then runs `run.sh`. If the executable bit was lost (e.g. the folder
-was copied through a USB stick), run `chmod +x j2me-deck` in Desktop Mode. Rebuild it with `launcher/build.sh` (needs `gcc`).
-
 **Controller:** On steam deck keep Steam's default *Gamepad* layout on gamemode and gamepad layout (by holding start) in desktop mode. The loader reads the virtual Xbox pad directly, so no key
 bindings are needed:
 
