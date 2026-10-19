@@ -1,0 +1,28 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'      # the OpenGL ES output needs exactly Java 21 (preview FFM API)
+      - name: System packages (virtual display, Mesa EGL/GLES for the GL checks)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb libegl1 libgles2 libgl1-mesa-dri
+      - name: Script syntax
+        run: for f in *.sh tools/*.sh launcher/*.sh; do bash -n "$f"; done
+      - name: Build
+        run: ./build.sh
+      - name: Self-tests
+        run: ./tools/selftest.sh
+      - name: Native launcher
+        run: ./launcher/build.sh

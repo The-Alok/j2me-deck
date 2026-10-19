@@ -1,0 +1,19 @@
+# build output
+/build/
+/dist/
+/j2me-deck
+*.class
+# private runtime installed by setup-java.sh (normally lives in ~/.local/share/j2me-deck/jre)
+/jre/
+# optional extra libraries are never committed (see lib/README.txt)
+/lib/*.jar
+# logs, editors, OS
+*.log
+.idea/
+*.iml
+.vscode/
+.DS_Store
+# games are never part of this repository
+*.jad
+*.jar
+!/lib/.gitkeep

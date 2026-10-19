@@ -1,0 +1,25 @@
+J2ME Deck
+Copyright 2026 J2ME Deck contributors
+
+J2ME Deck is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project was created by adapting the architecture and API coverage of the J2ME-Loader project to a Linux / SteamOS desktop
+runtime (Java SE + Swing instead of Android). It is an independent project and is not an official release of J2ME-Loader.
+
+Attribution for the work this project is based on:
+
+  J2ME-Loader
+  Copyright 2017-2024 Nikita Shakarun
+  Licensed under the Apache License, Version 2.0
+  https://github.com/nikita36078/J2ME-Loader
+  (J2ME-Loader is itself a fork of J2meLoader by Nickolay Savchenko, https://github.com/NaikSoftware/J2meLoader)
+
+  JL-Mod (Mascot Capsule 3D implementation referenced by J2ME-Loader)
+  woesss (Yury Kharchenko), Apache License, Version 2.0
+  https://github.com/woesss/JL-Mod
+
+Changes: all source files in src/ that carry an "SPDX-License-Identifier: Apache-2.0 / Copyright 2026 J2ME Deck contributors" header
+were written or modified for J2ME Deck. Files that carry another copyright header keep that header unchanged; see THIRD_PARTY.md.
+
+Third-party game files are not part of this distribution. Diamond Rush and every other game mentioned in the documentation belong
+to their respective owners.
