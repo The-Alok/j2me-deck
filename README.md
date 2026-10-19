@@ -66,11 +66,6 @@ If you prefer a keyboard-style Steam layout, these keys work too: arrows or **WA
 **Q / F1** = left soft, **E / F2** = right soft, **Esc/Backspace** = clear, **0-9, \*, #** (also numpad).
 
 For manual controller remapping, the active game profile is stored at `~/.config/j2me-deck/profiles/<game-name>/gamepad.properties`:
-```properties
-button.0=FIRE          # names: UP DOWN LEFT RIGHT FIRE SOFT_LEFT SOFT_RIGHT CLEAR STAR POUND 0-9 NONE
-button.3=5
-dpad=arrows            # arrows | digits | both (digits = 2/4/6/8 for games that ignore arrow keys)
-```
 
 ## Game library (console-style home)
 
