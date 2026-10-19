@@ -148,21 +148,6 @@ key mapping):
 
 Command line: `--size WxH` overrides the profile for one run; `./run.sh --library` forces the library.
 
-## What is supported (more games)
-
-| Area | Support |
-|---|---|
-| LCDUI high level | `Form`, `List` (all types), `TextBox`, `Alert`, `Ticker`, `StringItem`, `TextField`, `ChoiceGroup`, `Gauge`, `ImageItem`, `DateField`, `Spacer`, commands with a soft-key bar. Navigable with gamepad or keyboard. |
-| Game API | complete `Sprite`, `TiledLayer`, `LayerManager`, `GameCanvas` |
-| Nokia UI API | `FullCanvas`, `DirectGraphics` / `DirectUtils` (pixel formats, polygons, flips), `DeviceControl`, `Sound` |
-| Networking | `HttpConnection`, `HttpsConnection`, `SocketConnection` (per-game opt-in) |
-| Files | JSR-75 `FileConnection` / `FileSystemRegistry`, sandboxed per game under `~/.local/share/j2me-deck/fs/` |
-| Audio | MIDI, WAV/AU/AIFF, tone sequences (`ToneControl`); MP3/AMR/AAC/ADPCM when `ffmpeg` is installed |
-| Storage | RMS with enumerations, shared store instances, per-game folders |
-| Not supported | Mascot vendor wrappers (Motorola, J-Phone, Vodafone, JBlend 3D), Bluetooth, SMS/MMS, PIM, location, vendor APIs other than Nokia (Siemens, Samsung, Motorola...) |
-
-The scanner flags unsupported features before you waste time launching a game.
-
 ## Device presets, key layouts and compatibility tweaks
 
 *Settings -> Device & compatibility* in the library (or `~/.config/j2me-deck/profiles/<game>/game.properties`):
@@ -176,19 +161,9 @@ Two 3D APIs are implemented in pure Java (no OpenGL, no native libraries), so th
 
 * **Mascot Capsule v3** (`com.mascotcapsule.micro3d.v3`): a pure-Java software renderer; its provenance and license terms are listed in
   `THIRD_PARTY.md`. Settings: *don't mix with 2D*, *ignore the background*.
-* **M3G / JSR-184** (`javax.microedition.m3g`): written for this project. The full public API (all 30 classes, every method
-  and constant) plus a software rasteriser: perspective-correct texturing, Gouraud lighting (ambient, directional,
-  omni, spot, specular), fog, alpha test, depth test, five blend modes, skinning, morphing, keyframe animation,
-  ray picking and the `.m3g` file loader. About 390 fps for a textured lit scene at 240x320 on one slow core.
+* **M3G / JSR-184** (`javax.microedition.m3g`): written for this project. 
 
-The compatibility scanner now counts both as supported. See `PORTING_STATUS.md` for what is approximated.
-
-## Controller
-
-Besides the d-pad and left stick, **LT, RT and the right stick** (four directions) are mappable in the key mapper, like
-any button. `gamepad.properties` also accepts `stick.threshold`, `trigger.threshold` (0.1 to 0.9 of full travel),
-`stick.invertx`, `stick.inverty`, `rstick.invertx`, `rstick.inverty`. Back paddles appear as extra controller buttons
-when Steam Input exposes them as buttons 11 to 15.
+The compatibility scanner counts both as supported. See `PORTING_STATUS.md` for what is approximated.
 
 ## Library extras
 
@@ -206,7 +181,7 @@ Press **F8** while the game window is focused to open the Key Mapper. It has two
 - **Keyboard:** click a Nokia key, then press the physical key to assign it.
 - **Controller:** choose which Nokia key each of the 16 controller buttons sends.
 
-**Shift+F8** (or *Settings -> Global key mapping* in the library) opens the same mapper for the global map that every game starts from; a game's map only stores the bindings that differ from it. If you bind one key to two actions the mapper warns you (only one of them would work). Click **Save** to apply the mappings immediately. Profiles are saved per game under `~/.config/j2me-deck/profiles/<game-name>/`, so Diamond Rush and Splinter Cell can use different layouts. **Reset defaults** restores the built-in bindings. Keyboard mappings include directions, Fire, both soft keys, Clear, Send, End, digits 0-9, `*` and `#`.
+**Shift+F8** (or *Settings -> Global key mapping* in the library) opens the same mapper for the global map that every game starts from; a game's map only stores the bindings that differ from it. If you bind one key to two actions the mapper warns you (only one of them would work). Click **Save** to apply the mappings immediately. Profiles are saved per game under `~/.config/j2me-deck/profiles/<game-name>/`.
 
 ## OpenGL ES output (lower power)
 
