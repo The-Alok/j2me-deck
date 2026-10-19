@@ -4,13 +4,12 @@
 
 <img width="1247" height="746" alt="image" src="https://github.com/user-attachments/assets/f0fda62c-19bb-4592-995a-09e43c767929" />
 
+**AI (Claude) was used for development of this emulator.**
 
 J2ME Deck is a native desktop runtime for `.jar` / `.jad` mobile games, with a console-style, controller- and touch-friendly game
 library. It is plain Java SE + Swing. It is based on the architecture and API coverage of
 [J2ME-Loader](https://github.com/nikita36078/J2ME-Loader) (Apache-2.0) and is **not** an official release of that project - see
 [Credits and licenses](#credits-and-licenses).
-
-**AI (Claude) was used for development of this emulator.**
 
 > **Status: 0.1.0, first public release.** It was developed and tested on a real Steam Deck with a handful of games
 > (for example Gameloft's *Diamond Rush*, K800i build, and the 3D game *Medal of Honor Airborne*).
