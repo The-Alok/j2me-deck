@@ -1,7 +1,9 @@
 # J2ME Deck
 
 **Play classic Java ME (J2ME / MIDP 2.0) phone games on the Steam Deck and on Linux.**
-<img width="1274" height="765" alt="image" src="https://github.com/user-attachments/assets/0162a358-eb8c-45d7-b335-0e125bd4cd21" />
+
+<img width="1247" height="746" alt="image" src="https://github.com/user-attachments/assets/f0fda62c-19bb-4592-995a-09e43c767929" />
+
 
 J2ME Deck is a native desktop runtime for `.jar` / `.jad` mobile games, with a console-style, controller- and touch-friendly game
 library. It is plain Java SE + Swing: no Android, no emulator image, no NDK. It is based on the architecture and API coverage of
