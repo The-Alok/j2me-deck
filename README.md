@@ -52,10 +52,13 @@ bindings are needed:
 |---|---|
 | D-pad / left stick | arrow keys (move, climb, menus) |
 | A | FIRE / confirm (`-5`) |
-| X, Menu (Start) | left soft key (`-6`, pause menu in Diamond Rush) |
-| B, View (Back) | right soft key (`-7`, back) |
-| Y | number key `5` |
-| L1 / R1 | `*` / `#` |
+| X | (`*`) |
+| B | (`#`) |
+| Y | `0` |
+| L1 / R1 | `1` / `3` |
+| LT / RT | `7` / `9` |
+| Select | left soft key |
+| Start | right soft key |
 
 If you prefer a keyboard-style Steam layout, these keys work too: arrows or **WASD**, **Enter/Space** = fire,
 **Q / F1** = left soft, **E / F2** = right soft, **Esc/Backspace** = clear, **0-9, \*, #** (also numpad).
