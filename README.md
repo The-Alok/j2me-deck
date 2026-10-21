@@ -11,7 +11,7 @@ library. It is plain Java SE + Swing. It is based on the architecture and API co
 [J2ME-Loader](https://github.com/nikita36078/J2ME-Loader) (Apache-2.0) and is **not** an official release of that project - see
 [Credits and licenses](#credits-and-licenses).
 
-> **Status: 0.1.0, first public release.** It was developed and tested on a real Steam Deck with a handful of games
+> **Status: 0.1.1.** It was developed and tested on a real Steam Deck with a handful of games
 > (for example Gameloft's *Diamond Rush*, K800i build, and the 3D game *Medal of Honor Airborne*).
 
 **No games are included.** You need your own `.jar` files of games you are entitled to use.
@@ -141,6 +141,10 @@ key mapping):
 
 Command line: `--size WxH` overrides the profile for one run; `./run.sh --library` forces the library.
 
+**Unpainted edges:** if a game draws less than the whole screen (it was built for a smaller fixed size, e.g. 240x304 on a 240x320 screen), the rows or
+columns it never draws are shown black instead of MIDP's default white. Setting the game's screen size to what it really uses (e.g. 240x304)
+removes them completely. `J2ME_KEEP_UNPAINTED=1` turns the black fill off.
+
 ## Device presets, key layouts and compatibility tweaks
 
 *Settings -> Device & compatibility* in the library (or `~/.config/j2me-deck/profiles/<game>/game.properties`):
@@ -154,6 +158,8 @@ Two 3D APIs are implemented in pure Java (no OpenGL, no native libraries), so th
 
 * **Mascot Capsule v3** (`com.mascotcapsule.micro3d.v3`): a pure-Java software renderer; its provenance and license terms are listed in
   `THIRD_PARTY.md`. Settings: *don't mix with 2D*, *ignore the background*.
+* **Vendor Mascot wrappers** (`com.vodafone.v10.graphics.j3d`, `com.motorola.graphics.j3d`, `com.jblend.graphics.j3d`): thin adapters
+  over the same renderer, reached by casting `Graphics` to the vendor `Graphics3D` interface.
 * **M3G / JSR-184** (`javax.microedition.m3g`): written for this project. 
 
 The compatibility scanner counts both as supported. See `PORTING_STATUS.md` for what is approximated.
@@ -232,10 +238,10 @@ tools/headless-run.sh game.jar "wait 4000;shot /tmp/a.png;tap FIRE;wait 800;shot
 ```
 The last command runs a game with no display and writes screenshots, handy for regression testing.
 
-## Known limitations (0.1.0)
+## Known limitations (0.1.1)
 
 * Verified on a limited set of games only; many titles are untested. The library's compatibility badge is a static scan, not a guarantee.
-* Vendor APIs other than Nokia UI (Siemens, Samsung, Motorola, J-Phone/Vodafone wrappers), Bluetooth, SMS/MMS, PIM and location are not implemented.
+* Vendor APIs other than Nokia UI (Siemens, Samsung, Motorola, and the J-Phone `com.j_phone.amuse.j3d` and Motorola iDEN `com.motorola.iden.micro3d` 3D APIs), Bluetooth, SMS/MMS, PIM and location are not implemented.
 * The settings form, key mapper and file chooser are regular Swing dialogs and are less touch-friendly than the rest of the library.
 * Game Mode: the OpenGL ES renderer is opt-in there (`--renderer gles`); some Game Mode behaviour could only be verified on one device.
 * Per-game audio behaviour varies; if music is missing in a game, try `J2ME_DEBUG_AUDIO=1` and attach the log to a report.

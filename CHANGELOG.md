@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.1
+
+Added
+* **Vendor Mascot Capsule 3D wrappers**: `com.vodafone.v10.graphics.j3d` (Vodafone / J-Phone V10), `com.motorola.graphics.j3d` and
+  `com.jblend.graphics.j3d` (JBlend, incl. command lists, `renderFigure`/`renderPrimitives`/`flush` and `Texture(Image, ...)`). Games
+  cast their `Graphics` to the vendor `Graphics3D` interface, as on the handsets; calls are forwarded to the built-in Mascot v3
+  software renderer. The compatibility scanner now lists these games as supported instead of unsupported. Not included:
+  `com.j_phone.amuse.j3d` and the separate Motorola iDEN API `com.motorola.iden.micro3d`.
+
+Fixed
+* **White bar at the bottom of some games.** Games built for one fixed canvas size (for example the Diamond Rush build that hard-codes
+  240x304) leave the rest of the 240x320 virtual screen undrawn, and MIDP defines a fresh canvas as white. Those never-drawn rows (or
+  columns at the right edge) are now shown black. Only an area the game has never touched is affected, and only when it sits directly
+  below/next to a region the game paints edge to edge, so games that fill the whole screen, or draw sparsely on the default white
+  background, look exactly as before. Set `J2ME_KEEP_UNPAINTED=1` (or `-Dj2me.keepunpainted=true`) to switch it off.
+
 ## 0.1.0 - first public release
 
 First public release of J2ME Deck: a native Java SE / Swing runtime for Java ME (MIDP 2.0) games on Steam Deck and Linux, based on

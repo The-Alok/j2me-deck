@@ -2,6 +2,14 @@
 
 J2ME Deck itself is licensed under the Apache License 2.0 (`LICENSE`). This file lists code that came from elsewhere.
 
+## Vendor Mascot Capsule 3D wrappers (`com/vodafone/v10/graphics/j3d/`, `com/motorola/graphics/j3d/`, `com/jblend/graphics/j3d/`)
+
+The public classes of these three packages (`ActionTable`, `AffineTrans`, `Effect3D`, `Figure`, `FigureLayout`, `Graphics3D`, `Light`,
+`Texture`, `Util3D`, `Vector3D`) were taken from [JL-Mod](https://github.com/woesss/JL-Mod) (Apache License 2.0, Copyright 2020 and
+2022-2023 Yury Kharchenko) and changed only to delegate to this project's Mascot v3 classes instead of JL-Mod's OpenGL implementation
+(and, in JBlend `Texture`, an Image-to-BMP conversion). Each `RenderProxy` follows the structure of the JL-Mod class of the same name
+but was rewritten for the software renderer. Original Apache-2.0 headers are kept.
+
 ## Mascot Capsule v3 (`src/main/java/com/mascotcapsule/micro3d/v3/`)
 
 A pure-Java software implementation of the Mascot Capsule Micro3D v3 API. These 13 files were taken from the micro3d software
